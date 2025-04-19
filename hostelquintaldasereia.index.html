@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hostel Quintal da Sereia</title>
+  <style>
+    body{margin:0;font-family:Arial,sans-serif;
+      background:linear-gradient(to bottom,#FFA500,#00BFFF);
+      color:#333;}
+    header{background:rgba(255,255,255,0.8);padding:1rem;text-align:center;}
+    header .logo{height:80px;}
+    nav a,nav select{margin:0 10px;color:#000;text-decoration:none;}
+    main{padding:2rem;max-width:800px;margin:auto;}
+    section{margin-bottom:2rem;}
+    form input,form select,form textarea,form button{
+      width:100%;padding:0.8rem;margin:0.5rem 0;}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+    .gallery img{width:100%;border-radius:8px;}
+    footer{background:#004d4d;color:#fff;text-align:center;padding:1rem;}
+    @media(max-width:600px){main{padding:1rem;}}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://placehold.co/80x80?text=Logo" alt="Logo" class="logo">
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#quartos">Quartos</a>
+      <a href="#reservas">Reservas</a>
+      <a href="#contato">Contato</a>
+      <select id="language">
+        <option value="pt">🇧🇷 PT</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="es">🇪🇸 ES</option>
+      </select>
+    </nav>
+  </header>
+  <main>
+    <section id="sobre">
+      <h1 data-pt="Sobre Nós" data-en="About Us" data-es="Sobre Nosotros">Sobre Nós</h1>
+      <p data-pt="Espaço reservado para futuro texto."
+         data-en="Space reserved for future text."
+         data-es="Espacio reservado para texto futuro."></p>
+    </section>
+    <section id="quartos">
+      <h2 data-pt="Quartos" data-en="Rooms" data-es="Habitaciones">Quartos</h2>
+      <ul>
+        <li>1 Compartilhado</li>
+        <li>1 Quádruplo</li>
+        <li>2 Duplos</li>
+        <li>3 Sêxtuplos</li>
+        <li>5 Banheiros</li>
+      </ul>
+    </section>
+    <section id="reservas">
+      <h2 data-pt="Reservas" data-en="Bookings" data-es="Reservas">Reservas</h2>
+      <form id="form">
+        <input placeholder="Nome" required>
+        <input type="email" placeholder="E-mail" required>
+        <input type="tel" placeholder="Telefone" required>
+        <select required>
+          <option disabled selected>Tipo de Quarto</option>
+          <option>Compartilhado</option>
+          <option>Quádruplo</option>
+          <option>Duplo</option>
+          <option>Sêxtuplo</option>
+        </select>
+        <input type="date" required>
+        <input type="date" required>
+        <textarea placeholder="Mensagem"></textarea>
+        <button type="submit">Enviar Reserva</button>
+      </form>
+      <p id="success" style="display:none;"
+         data-pt="Reserva enviada!"
+         data-en="Booking sent!"
+         data-es="Reserva enviada!"></p>
+    </section>
+    <section id="galeria">
+      <h2 data-pt="Galeria" data-en="Gallery" data-es="Galería">Galeria</h2>
+      <div class="gallery">
+        <img src="https://placehold.co/150x100" alt="">
+        <img src="https://placehold.co/150x100" alt="">
+        <img src="https://placehold.co/150x100" alt="">
+      </div>
+    </section>
+    <section id="contato">
+      <h2 data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</h2>
+      <p>📞 +55 71 9 9734‑7829</p>
+      <p>📸 @hostelquintaldasereia</p>
+      <p data-pt="Localização: Rua Aurora, 29, Itapuã, Salvador‑BA"
+         data-en="Location: Rua Aurora, 29, Itapuã, Salvador‑BA"
+         data-es="Ubicación: Rua Aurora, 29, Itapuã, Salvador‑BA"></p>
+    </section>
+  </main>
+  <footer>&copy; 2025 Hostel Quintal da Sereia</footer>
+  <script>
+    document.getElementById('form').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('success').style.display = 'block';
+    });
+    document.getElementById('language').addEventListener('change', function() {
+      const lang = this.value;
+      document.querySelectorAll('[data-pt]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+    });
+  </script>
+</body>
+</html>
